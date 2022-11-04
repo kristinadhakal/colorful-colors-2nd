@@ -6,6 +6,10 @@ body {
 }
 
 #container div {
-  width: 100px;
+  width: 500px;
   height: 50px;
+}
+
+input {
+  width: 60%
 }
