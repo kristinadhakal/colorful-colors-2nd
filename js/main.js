@@ -22,16 +22,16 @@ function processData(stringData) {
 console.log("After Fetch");
 
 // EVenet Listener
-inputEl.addEventListener("keydown", submitHandler);
+inputEl.addEventListener("keyup", submitHandler);
 
 function submitHandler(event) {
-  if (event.keyCode === 13) {
-    // Add user's colours to the colours array and display
-    colours.push(inputEl.value);
-    inputEl.value = "";
-    displayColours(colours);
+  let divStr = "";
+  for (let i = 0; i < colours.length; i++) {
+    if (colours[i].includes(inputEl.value))
+    divStr += `<div style ="background: ${colours[i]}">${colours[i]}</div>`;
   }
-}
+  containerEL.innerHTML = divStr;
+  }
 
 function displayColours(colours) {
   // Display colours on page
@@ -39,10 +39,9 @@ function displayColours(colours) {
   let count = 0;
 
   for (let i = 0; i < colours.length; i++) {
-    if (colours[i].length === 4) {
-      divStr += `<div style ="background: ${colours[i]}">${colours[i]}</div>`;
+   divStr += `<div style ="background: ${colours[i]}">${colours[i]}</div>`;
       count++;
-    }
+    
   }
   containerEL.innerHTML = divStr + `<p> Count: ${count}</p>`;
 }
